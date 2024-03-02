@@ -49,14 +49,6 @@ struct IsGreater
 };
 
 
-void print(Node* head)
-{
-    while(head) {
-        std::cout << head->val << " ";
-        head = head->next;
-    }
-    std::cout << std::endl;
-}
 
 
 /********************************************
@@ -83,7 +75,6 @@ TEST(Pivot, Size1SmallEmpty)
 	Node* large = (Node*) &list; // set to a non-null address
 	llpivot(list, small, large, 1);
 
-	print(list);
 	EXPECT_TRUE(checkContent(small, {}));
 	EXPECT_TRUE(checkContent(large, {2}));
 	EXPECT_TRUE(checkContent(list, {}));
