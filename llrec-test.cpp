@@ -2,6 +2,7 @@
 #include <fstream>
 #include <functional>
 #include "llrec.h"
+#include <vector>
 using namespace std;
 
 /**
@@ -41,6 +42,26 @@ Node* readList(const char* filename)
         t = t->next;
     }
     return h;
+}
+
+Node * makeList(std::vector<int> const & content)
+{
+	Node * head = nullptr;
+	Node * tail = nullptr;
+
+	for(auto v : content)
+	{
+		if(head == nullptr) {
+			head = new Node(v,nullptr);
+			tail = head;
+		}
+		else {
+			tail->next = new Node(v,nullptr);
+			tail = tail->next;
+		}
+
+	}
+	return head;
 }
 
 void print(Node* head)
@@ -87,10 +108,13 @@ int main(int argc, char* argv[])
     cout << "Original list: ";
     print(head);
 
-    // Test out your linked list code
-    head=llfilter(head,cmp);
 
-    print(head);
+    Node* list = makeList({2,3,4,5,6});
+    Node* small = (Node*) &list; // set to a non-null address
+    Node* large = (Node*) &list; // set to a non-null address
+    llpivot(list, small, large, 1);
+    print(small);
+    print(large);
     
     return 0;
 

@@ -19,7 +19,9 @@ void div(Node *&head, Node *&smaller, Node *&larger, int pivot){
 
 
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot){
-  smaller=NULL;
-  larger=NULL;
-  return div(head,smaller,larger,pivot);
+  smaller=nullptr;
+  larger=nullptr;
+  div(head,smaller,larger,pivot);
+  head=NULL;
+  return;
 }
