@@ -68,7 +68,9 @@ void dealloc(Node* head)
 // -----------------------------------------------
 
 
-
+bool cmp(int a){
+  return a%2==0;
+}
 
 
 int main(int argc, char* argv[])
@@ -86,9 +88,9 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
+    head=llfilter(head,cmp);
 
-
-
+    print(head);
     
     return 0;
 
